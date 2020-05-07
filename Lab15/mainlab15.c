@@ -23,15 +23,6 @@ int main(void)
             for (int i=0;i<10000;i++) {
                 mainRoot = insertBST(mainRoot, array[i]);
             }
-            //mainRoot = insertBST(mainRoot, array[1]);
-            //mainRoot = insertBST(mainRoot, array[2]);
-            //mainRoot = insertBST(mainRoot, array[3]);
-            //mainRoot = insertBST(mainRoot, array[4]);
-            //mainRoot = insertBST(mainRoot, array[5]);
-
-            //printf("Array->left = %f", mainRoot->left->data->salary);
-
-            //print2D(mainRoot);
 
             Employee *test = NULL;
 
