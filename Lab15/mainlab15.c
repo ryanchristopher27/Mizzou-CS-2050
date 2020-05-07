@@ -7,28 +7,47 @@
 
 int main(void)
 {
-    Node *mainRoot = NULL;
+    FILE * fp = fopen("employee.csv", "r");
+    if (fp)
+    {
+        Employee ** array = readRecord(fp);
+        fclose(fp);
 
-    mainRoot = insertBST(mainRoot, 50);
+        if (array)
+        {
+            Node * mainRoot = NULL;
+            mainRoot = insertBST(mainRoot, array[0]);
 
-    insertBST(mainRoot, 60);
-    insertBST(mainRoot, 20);
-    insertBST(mainRoot, 40);
-    insertBST(mainRoot, 17);
-    insertBST(mainRoot, 70);
-    insertBST(mainRoot, 55);
+            //printf("\nArray[0] = %f\n", mainRoot->data->salary);
 
-    Node *test = NULL;
+            for (int i=0;i<10000;i++) {
+                mainRoot = insertBST(mainRoot, array[i]);
+            }
+            //mainRoot = insertBST(mainRoot, array[1]);
+            //mainRoot = insertBST(mainRoot, array[2]);
+            //mainRoot = insertBST(mainRoot, array[3]);
+            //mainRoot = insertBST(mainRoot, array[4]);
+            //mainRoot = insertBST(mainRoot, array[5]);
 
-    test = searchBST(mainRoot, 17);
+            //printf("Array->left = %f", mainRoot->left->data->salary);
 
-    printf("\ntest search: %d\n", test->data);
+            //print2D(mainRoot);
 
-    printTree(mainRoot);
+            Employee *test = NULL;
 
-    freeTree(mainRoot);
+            test = searchBST(mainRoot, 3600.4);
 
-    printf("\nEnd of program\n");
+            if (test == NULL) {
+                printf("\nNo value\n");
+            } else {
+            printf("\nTest value: %f\n", test->salary);
+            }
+
+            deleteTree(mainRoot);
+
+            printf("\nEnd of Program\n");
+        }
+    }
 
     return 0;
 }

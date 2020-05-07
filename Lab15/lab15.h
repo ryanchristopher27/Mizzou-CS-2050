@@ -5,26 +5,22 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 //Structures
-typedef struct nodeStruct {
-    int data;
-    struct nodeStruct *left;
-    struct nodeStruct *right;
+typedef struct {
+    int ID;
+    float salary;
+    int ssn;
+} Employee;
+
+typedef struct node {
+    Employee *data;
+    struct node *left, *right;
 } Node;
 
-typedef struct statestruct{
-    float populationInMillion;
-    //float priority;
-    //struct statestruct *previousState, *nextState;
-}State;
-
 //Prototype Functions
-Node * createNode(int data);
-Node * insertBST(Node * mainTree, State * list);
-Node * searchBST(Node * mainTree, int data);
-void printTree(Node * mainTree);
-void freeTree(Node * mainTree);
-//void print2DTree(Node * mainTree, int space);
-//void print2D(Node * mainTree);
+Employee ** readRecord(FILE * file);
+int comparison(void * mainTree, void * node);
+Node * insertBST(Node * mainTree, Employee * newNode);
+Employee * searchBST(Node * mainTree, float target);
+void deleteTree(Node * mainTree);
